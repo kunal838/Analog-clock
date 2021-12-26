@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analog Clock</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      #clock {
+        background-color: rgb(226, 255, 213);
+        position: relative;
+       
+       
+        margin: auto;
+        height: 40vw;
+        width: 40vw;
+        box-shadow: 10px 10px 129px 0px rgba(36, 36, 36, 0.75);
+        -webkit-box-shadow: 10px 10px 129px 0px rgba(160, 144, 144, 0.75);
+        -moz-box-shadow: 10px 10px 129px 0px rgba(0, 0, 0, 0.75);
+        border-radius: 50px;
+        background-size: 100%;
+      }
+      #hourHand,
+      #minuteHand,
+      #secondHand {
+        position: absolute;
+        background: rgb(0, 0, 0);
+        border-radius: 10px;
+        transform-origin: bottom;
+      }
+      #hourHand {
+        width: 3%;
+        height: 25%;
+        top: 25%;
+        left: 48.85%;
+        opacity: 0.8;
+        background-color: rgb(0, 0, 0);
+        z-index: 10;
+      }
+
+      #minuteHand {
+        width: 1.9%;
+        height: 30%;
+        top: 19%;
+        left: 48.9%;
+        opacity: 0.8;
+        background-color: rgb(0, 0, 0);
+        z-index: 9;
+      }
+
+      #secondHand {
+        width: 1%;
+        height: 40%;
+        top: 9%;
+        left: 49.25%;
+        opacity: 0.8;
+        background-color: rgb(255, 85, 6);
+        z-index: 8;
+      }
+      #clockContainer {
+        position: relative;
+        margin: auto;
+        height: 40vw;
+        width: 40vw;
+
+        background-size: 100%;
+      }
+
+      #hour,
+      #minute,
+      #second {
+        position: absolute;
+        background: rgb(0, 110, 255);
+        border-radius: 10px;
+        transform-origin: bottom;
+      }
+      #hour {
+        width: 1.8%;
+        height: 25%;
+        top: 25%;
+        left: 48.85%;
+        opacity: 0.8;
+      }
+      #minute {
+        width: 1.6%;
+        height: 30%;
+        top: 19%;
+        left: 48.9%;
+        opacity: 0.8;
+      }
+      #second {
+        width: 1%;
+        height: 40%;
+        top: 9%;
+        left: 49.25%;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock">
+      <div id="hourHand"></div>
+      <div id="minuteHand"></div>
+      <div id="secondHand"></div>
+    </div>
+    <script>
+      let hour = document.querySelector("#hourHand");
+      let minute = document.querySelector("#minuteHand");
+      let second = document.querySelector("#secondHand");
+
+      setInterval(() => {
+        d = new Date();
+        htime = d.getHours();
+        mtime = d.getMinutes();
+        stime = d.getSeconds();
+        hrotation = 30 * htime + mtime / 2;
+        mrotation = 6 * mtime;
+        srotation = 6 * stime;
+        hour.style.transform = `rotate(${hrotation}deg)`;
+        minute.style.transform = `rotate(${mrotation}deg)`;
+        second.style.transform = `rotate(${srotation}deg)`;
+      }, 1000);
+    </script>
+  </body>
+</html>
